@@ -1,0 +1,9 @@
+updatePackage/BadRequestException.class
+updatePackage/CoverageParams.class
+updatePackage/TestRequest.class
+updatePackage/Application.class
+updatePackage/StoreData.class
+updatePackage/EnableCORS.class
+updatePackage/UpdateController.class
+updatePackage/VisualParams.class
+updatePackage/RequestController.class
