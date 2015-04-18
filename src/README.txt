@@ -1,5 +1,5 @@
 dataServer/                         central data server
-    build.gradle                        gradle build configuration
+    build.gradle                        gradle build files
     gradle/wrapper/*                              
     gradlew                             
     gradlew.bat                         
@@ -11,7 +11,7 @@ dataServer/                         central data server
         StoreData.java                      SQL database handler
         VisualParams.java                   output object
         CoverageParams.java                 input object
-        RequestController.java              data request handler
+        RequestController.java              data output request handler
         UpdateController.java               data input handler
 
 webDisplay/                         web visualization scripts

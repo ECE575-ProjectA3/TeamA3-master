@@ -18,9 +18,9 @@ public class StoreData {
 	public static final String UPLOADSPEED			= "uploadSpeed";
 	
 	private static final String URL = 
-			"jdbc:mysql://universitystudenthousing.cji1dpedv3e5.us-east-1.rds.amazonaws.com:3306/csc540project1";
-    private static final String USER = "";
-    private static final String PASSWORD = "";
+			"jdbc:mysql://localhost:3306/ece575";
+    private static final String USER = "mysql";
+    private static final String PASSWORD = "ece575";
     
     private static double[] testLatitude = 
     	   {35.770820237954545,	35.770402398496785,	35.77799280632021,
@@ -52,6 +52,21 @@ public class StoreData {
 		System.out.println("Loaded JDBC driver");
 	}
 	
+	private String getDatabaseCarrierName(String carrierName) {
+		//strip special characters from carrierName
+	    String dbCarrierName = carrierName;
+	    if (carrierName.equals("T-Mobile")==true) {
+	    	dbCarrierName = "TMobile";
+	    }
+	    if (carrierName.equals("US Cellular")==true) {
+	    	dbCarrierName = "USCellular";
+	    }
+	    if (carrierName.equals("AT&T")==true) {
+	    	dbCarrierName = "ATT";
+	    }	    
+	    return dbCarrierName;
+	}
+	
 	/*
 	 * Store data in the corresponding table
 	 */
@@ -60,24 +75,14 @@ public class StoreData {
 			Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		    Statement statement = connection.createStatement();
 		    
-		    //strip special characters from carrierName
-		    String carrierName = input.getCarrierName();
-		    if (carrierName.equals("T-Mobile")==true) {
-		    	carrierName = "TMobile";
-		    }
-		    if (carrierName.equals("US Cellular")==true) {
-		    	carrierName = "USCellular";
-		    }
-		    if (carrierName.equals("AT&T")==true) {
-		    	carrierName = "ATT";
-		    }
+		    String carrierName = getDatabaseCarrierName(input.getCarrierName());
 			
 		    //populate SQL insert statement from given data
 			String insert = "INSERT INTO "+ carrierName
 					+ " ("+LATITUDE+","+LONGITUDE+","+SIGNALSTRENGTH+","
 					+ DOWNLOADSPEED+","+UPLOADSPEED+","+DATETIME+") VALUES ("
 					+ input.getLatitude() +","+ input.getLongitude() +","+ input.getSignalStrength() +","
-					+ input.getDownloadSpeed() +","+ input.getUploadSpeed() +","+ input.getDateTime() +")";
+					+ input.getDownloadSpeed() +","+ input.getUploadSpeed() +",'"+ input.getDateTime() +"')";
 			
 			System.out.println(insert);
 		    statement.execute(insert);	//execute data insertion operation
@@ -131,22 +136,14 @@ public class StoreData {
 			Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		    Statement statement = connection.createStatement();
 		    
-		    //strip special characters from carrierName
-			if (carrierName.equals("T-Mobile")) {
-				carrierName = "TMobile";
-			}
-		    if (carrierName.equals("US Cellular")==true) {
-		    	carrierName = "USCellular";
-		    }
-		    if (carrierName.equals("AT&T")==true) {
-		    	carrierName = "ATT";
-		    }
+			carrierName = getDatabaseCarrierName(carrierName);
 		    
 		    //populate SQL query filtered by date and time range
 		    String query = "SELECT * FROM "+ carrierName
-		    		+ " WHERE "+DATETIME+" > "+ minDate +" AND "+DATETIME+" <= DATEADD(day,1,"+ maxDate +")"
-		    		+ " AND DATEPART(hh,"+DATETIME+") >= "+ minTime
-		    		+ " AND DATEPART(hh,"+DATETIME+") <= "+ maxTime;
+		    		+ " WHERE DATE("+DATETIME+") > "+ "DATE('" + minDate + "')" 
+		    		+" AND DATE("+DATETIME+") <= DATE('"+ maxDate + "')" 
+		    		+ " AND HOUR("+DATETIME+") >= "+ minTime
+		    		+ " AND HOUR("+DATETIME+") < "+ maxTime;
 		    
 		    System.out.println(query);
 		    ResultSet result = statement.executeQuery(query);	//execute data query
@@ -154,7 +151,7 @@ public class StoreData {
 		    //iterate through result set
 		    while (result.next()) {
 		    	Number dataValue;
-		    	if(dataType==SIGNALSTRENGTH) {
+		    	if(dataType.equals(SIGNALSTRENGTH)) {
 		    		dataValue = result.getInt(dataType);
 		    	} else {
 		    		dataValue = result.getDouble(dataType);

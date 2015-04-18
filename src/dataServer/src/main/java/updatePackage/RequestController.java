@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class RequestController {
 	
 	//default values for date/time filtering (should match everything)
-	public static final String DEFAULT_MIN_DATE = "01/01/0001";
-	public static final String DEFAULT_MAX_DATE = "12/31/9999";
+	public static final String DEFAULT_MIN_DATE = "0001-01-01";
+	public static final String DEFAULT_MAX_DATE = "9999-12-31";
 	public static final String DEFAULT_MIN_TIME = "0";
 	public static final String DEFAULT_MAX_TIME = "24";
 	

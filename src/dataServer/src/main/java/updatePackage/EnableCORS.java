@@ -21,7 +21,7 @@ public class EnableCORS implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain fc) throws IOException,ServletException {
 		HttpServletResponse http = (HttpServletResponse) response;
 		http.setHeader("Access-Control-Allow-Origin","*");
-		http.setHeader("Access-Control-Allow-Methods","GET, OPTIONS");
+		http.setHeader("Access-Control-Allow-Methods","GET, POST, OPTIONS");
 		http.setHeader("Access-Control-Max-Age","3600");
 		http.setHeader("Access-Control-Allow-Headers","x-requested-with");
 		fc.doFilter(request, response);
