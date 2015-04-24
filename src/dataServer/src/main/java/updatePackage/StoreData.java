@@ -34,7 +34,7 @@ public class StoreData {
 			-78.67056369781494,	-78.68086338043213,	-78.70824337005615,
 			-78.72395038604736,	-78.73201847076416};
 	
-	private int[] testSignalStrength = {30,20,10,0,30,20,10,0,30,20,10};
+	private int[] testSignalStrength = {3,2,1,0,3,2,1,0,3,2,1};
 	
 	private String[] testDateTime = 
 		   {"01/01/2014 03:35","02/02/2014 13:52","03/03/2014 21:21",
@@ -103,7 +103,7 @@ public class StoreData {
 					+ " ("+LATITUDE+","+LONGITUDE+","+SIGNALSTRENGTH+","
 					+ DOWNLOADSPEED+","+UPLOADSPEED+","+DATETIME+") VALUES ("
 					+ input.getLatitude() +","+ input.getLongitude() +","+ input.getWifiSignalStrength() +","
-					+ input.getWifiDownloadSpeed() +","+ input.getWifiUploadSpeed() +","+ input.getDateTime() +")";
+					+ input.getWifiDownloadSpeed() +","+ input.getWifiUploadSpeed() +",'"+ input.getDateTime() +"')";
 			
 			System.out.println(insert);
 		    statement.execute(insert);	//execute data insertion operation
@@ -140,7 +140,7 @@ public class StoreData {
 		    
 		    //populate SQL query filtered by date and time range
 		    String query = "SELECT * FROM "+ carrierName
-		    		+ " WHERE DATE("+DATETIME+") > "+ "DATE('" + minDate + "')" 
+		    		+ " WHERE DATE("+DATETIME+") >= "+ "DATE('" + minDate + "')" 
 		    		+" AND DATE("+DATETIME+") <= DATE('"+ maxDate + "')" 
 		    		+ " AND HOUR("+DATETIME+") >= "+ minTime
 		    		+ " AND HOUR("+DATETIME+") < "+ maxTime;
