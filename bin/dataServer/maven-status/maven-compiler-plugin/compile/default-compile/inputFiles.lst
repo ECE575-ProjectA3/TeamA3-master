@@ -1,8 +1,7 @@
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/Application.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/EnableCORS.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/UpdateController.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/VisualParams.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/TestRequest.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/RequestController.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/CoverageParams.java
-/home/ryan/TeamA3/src/dataServer/src/main/java/updatePackage/StoreData.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/Application.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/CoverageParams.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/UpdateController.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/StoreData.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/EnableCORS.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/VisualParams.java
+/home/ryan/ece575git/TeamA3-master/src/dataServer/src/main/java/updatePackage/RequestController.java

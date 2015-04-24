@@ -5,7 +5,7 @@ SHELL = /bin/sh
 
 .PHONY : ALL, clean, install, dataServer, mobileDisplay, mobileCollector
 
-ALL : dataServer mobileCarrier mobileCollector
+ALL : dataServer mobileDisplay mobileCollector
 
 # compile and package dataServer
 dataServer : dataServer/target/dataServer-*.jar
@@ -22,13 +22,9 @@ mobileDisplay :
 mobileCollector : 
 	#add build commands here
 
-# should we include this?
-install : 
-	#does nothing (for now)
-
 # clean binaries from system
 clean : 
-	rm -rf ../bin/dataServer/*
-	rm -rf ../bin/mobileDisplay/*
-	rm -rf ../bin/mobileCollector/*
+	rm -vrf ../bin/dataServer/*
+	rm -vrf ../bin/mobileDisplay/*
+	rm -vrf ../bin/mobileCollector/*
 
