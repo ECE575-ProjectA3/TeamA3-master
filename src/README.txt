@@ -1,8 +1,10 @@
 dataServer/                         central data server
-    build.gradle                        gradle build files
-    gradle/wrapper/*                              
-    gradlew                             
-    gradlew.bat                         
+    build.gradle                        gradle build configuration
+    gradle/wrapper/                         ..
+        gradle-wrapper.jar                  ..
+        gradle-wrapper.properties           ..
+    gradlew                                 ..
+    gradlew.bat                             ..
     pom.xml                             maven build configuration
     target                              symbolic link to bin/dataServer
     src/main/java/updatePackage/        source package for the server
@@ -11,35 +13,110 @@ dataServer/                         central data server
         StoreData.java                      SQL database handler
         VisualParams.java                   output object
         CoverageParams.java                 input object
-        RequestController.java              data output request handler
+        RequestController.java              data request handler
         UpdateController.java               data input handler
 
 webDisplay/                         web visualization scripts
   * gmaps.js                            google maps api extension
   * jquery-1.11.2.min.js                jQuery javascript library
-    mapDisplay.js                       javascript function definitions
     mapDisplay.html                     map display page with filters
+    mapDisplay.js                       javascript function definitions    
 
 mobileDisplay/                      Android data visualization app
-    (put stuff here!!!)
+    build.gradle                        gradle build configuration
+	gradle/wrapper/                         ..
+	    gradle-wrapper.jar                  ..
+	    gradle-wrapper.properties           ..
+	gradle.properties                       ..
+    gradlew                                 ..
+    gradlew.bat                             ..
+    settings.gradle                         ..
+	CellularCoverage.iml
+	android.jks
+    app/
+        app.iml
+        build.gradle proguard-rules.pro
+        src/
+		    androidTest/java/com/androidTest/
+		       java/com/ncsu/
+		            wireless/cellularcoverage/
+		                ApplicationTest.java
+            main/
+                AndroidManifest.xml
+                java/com/ncsu/
+                    wireless/cellularcoverage/
+                        CarrierList.java
+                        DateForm.java
+                        MainActivity2Activity.java
+                        MapDisplay.java
+                        SignalParameter.java
+                res/
+                    layout/
+                        activity_carrier_list.xml
+                        activity_date_form.xml
+                        activity_main_activity2.xml
+                        activity_map_display.xml
+                        activity_signal_parameter.xml
+                    menu/
+                        menu_carrier_list.xml
+                        menu_date_form.xml
+                        menu_main_activity2.xml
+                        menu_main.xml
+                        menu_map_display.xml
+                        menu_signal_parameter.xml
+                    mipmap-hdpi/ic_launcher.png
+                    mipmap-mdpi/ic_launcher.png
+                    mipmap-xhdpi/ic_launcher.png
+                    mipmap-xxhdpi/ic_launcher.png
+                    values/
+                        dimens.xml
+                        google_maps_api.xml
+                        strings.xml
+                        styles.xml
+                    values-w820dp/dimens.xml
 
 mobileCollector/                    Android data collection app
-    build.gradle			gradle build files
-    gradle/wrapper/*
-    gradlew
-    gradlew.bat
-    mobileCollector.iml			configuration record for module
-    app/src/androidTest/java/com/example/wirelessproj/locationcoverage/ApplicationTest.java	test file	
-    app/src/main/
-        AndroidManifest.xml		essential information about app
-        res/*			 	specifies layout of app screens
-        java/com/example/wirelessproj/locationcoverage	
-            CoverageInfo.java			checks for changes in signal strength
-	    LocationInfo.java			checks for changes in location
-	    LocationListenerTask.java		assigns new location when changed
-	    MainActivity.java			main handler thread
-	    PhoneStateListener.java		assigns new signal strength when changed
-	    StageChangeHandler.java		posts data to server
-	    StateChangeMsg.java			triggers message when attribute changes
+    build.gradle                        gradle build configuration
+	gradle/wrapper/                         ..
+	    gradle-wrapper.jar                  ..
+	    gradle-wrapper.properties           ..
+	gradle.properties                       ..
+    gradlew                                 ..
+    gradlew.bat                             ..
+    settings.gradle                         ..
+    LocationCoverage.iml
+    mobileCollector.iml
+    app/
+        app.iml
+        build.gradle
+        proguard-rules.pro
+        src/
+            androidTest/java/com/example/
+                wirelessproj/locationcoverage/
+                    ApplicationTest.java
+            main/
+                AndroidManifest.xml
+                java/com/example/
+                    wirelessproj/locationcoverage/
+                        CoverageInfo.java
+                        LocationInfo.java
+                        LocationListenerTask.java
+                        MainActivity.java
+                        PhoneStateListenerTask.java
+                        StateChangeHandler.java
+                        StateChangeMsg.java
+                res/
+                    layout/activity_main.xml
+                    menu/menu_main.xml
+                    mipmap-hdpi/ic_launcher.png
+                    mipmap-mdpi/ic_launcher.png
+                    mipmap-xhdpi/ic_launcher.png
+                    mipmap-xxhdpi/ic_launcher.png
+                    values/
+                        dimens.xml
+                        strings.xml
+                        styles.xml
+                    values-v21/styles.xml
+                    values-w820dp/dimens.xml
 
 (items marked with * are external resources not created by this team, and are property of their respective maintainers)
