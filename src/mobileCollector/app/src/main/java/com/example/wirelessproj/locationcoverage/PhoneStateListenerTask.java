@@ -1,17 +1,14 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
 import android.os.Message;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by shivu on 3/11/2015.
- */
+//Implementing an instance of the PhoneStateListener class
 public class PhoneStateListenerTask extends PhoneStateListener {
 
     TelephonyManager mTmngr;
@@ -24,6 +21,7 @@ public class PhoneStateListenerTask extends PhoneStateListener {
     }
 
     @Override
+    //Invoked when there has been a change in the signal strength
     public void onSignalStrengthsChanged(SignalStrength signalStrength) {
         super.onSignalStrengthsChanged(signalStrength);
 
@@ -35,6 +33,7 @@ public class PhoneStateListenerTask extends PhoneStateListener {
         Message msg = m_chngHdlr.obtainMessage();
         msg.obj = (Object)chngMsg;
 
+        //Checking if the network type is LTE
         if (mTmngr.getNetworkType() == 13) {
             // Reflection code starts from here
             // copy pasted from http://www.truiton.com/2014/08/android-onsignalstrengthschanged-lte-strength-measurement/
@@ -52,6 +51,7 @@ public class PhoneStateListenerTask extends PhoneStateListener {
                     }*/
                     if (mthd.getName().equals("getLteSignalStrength")) {
                         int signalLevel = (Integer)mthd.invoke(signalStrength);
+                        //Divided by 8 to sort them into ranges of low, medium and high signal strength
                         cInfo.setSignalStrengthLevel(signalLevel/8);
                     }
                 }

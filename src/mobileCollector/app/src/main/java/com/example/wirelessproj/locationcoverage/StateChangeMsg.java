@@ -1,10 +1,6 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
-import android.location.Location;
-
-/**
- * Created by shivu on 3/22/2015.
- */
+//Triggers a change of state message wen either the signal strength or location parameters have changed
 public class StateChangeMsg {
     boolean m_isLocationChanged;
     LocationInfo m_linfo = null;

@@ -1,14 +1,11 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.os.Message;
-import android.util.Log;
 
-/**
- * Created by shivu on 3/11/2015.
- */
+//Implementing an instance of the LocationListener class
 public class LocationListenerTask implements LocationListener {
 
     StateChangeHandler m_chngHdlr;
@@ -18,8 +15,8 @@ public class LocationListenerTask implements LocationListener {
         m_chngHdlr = chngHdlr;
     }
 
+    //Invoked when the location is changed, sets the new location parameters
     public void onLocationChanged(Location location) {
-        // Called when a new location is found by the network location provider.
         //Log.d(TAG, "Location changed");
         LocationInfo lInfo = new LocationInfo();
         lInfo.setLongitude(location.getLongitude());

@@ -1,8 +1,6 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
-/**
- * Created by shivu on 3/22/2015.
- */
+//Assigning and extracting location values
 public class LocationInfo {
     double m_longitude;
     double m_latitude;
@@ -23,6 +21,7 @@ public class LocationInfo {
         return m_latitude;
     }
 
+    //Checking if the location has been changed
     public boolean isChnaged(LocationInfo rhs) {
         if (rhs == null) {
             return true;

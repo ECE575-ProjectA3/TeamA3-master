@@ -1,4 +1,4 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -23,16 +23,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by shivu on 3/22/2015.
- */
+
 public class StateChangeHandler extends Handler {
 
     private static final String TAG = "APP_DEBUG" + StateChangeHandler.class.getSimpleName();
     private LocationInfo m_locationInfo = null;
     private CoverageInfo m_coverageInfo = null;
 
-    /* This class has to be in sync with server code */
+    //Defining all the parameters which are to be stored in the database
     public class CoverageParams {
         private double latitude;
         private double longitude;
@@ -83,6 +81,7 @@ public class StateChangeHandler extends Handler {
         }
         CoverageParams() {}
 
+        //Storing all the values of the variables
         public void setLatitude(double latitude) {
             this.latitude = latitude;
         }
@@ -150,8 +149,10 @@ public class StateChangeHandler extends Handler {
         super(l);
     }
 
+    //Invoked when a new set of attributes need to be pushed into the server
     private void postToServer(CoverageParams cParams) {
 
+        //Defining new httpclient and gson object
         HttpClient httpclient = new DefaultHttpClient();
         Gson gson = new Gson();
         try {
@@ -172,7 +173,7 @@ public class StateChangeHandler extends Handler {
 
     private double measureSpeed() {
         double speed = 0.0;
-        // We measure speed by downloading huge image file and checking how much time it takes
+        //Speed measured by downloading a huge image file and checking how much time it takes
         try {
             URL url = new URL("http://crevisio.com/photos/193-PiQA9tpp3/Crevisio-193-PiQA9tpp3.jpg");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -204,12 +205,12 @@ public class StateChangeHandler extends Handler {
 
     public void handleMessage(Message msg) {
 
-        // We have received change of state message
+        //Invoked when a change of state message is received
         StateChangeMsg chngMsg = (StateChangeMsg)msg.obj;
         if (chngMsg.isLocationChanged() == true) {
-            // Location has changed
+            //Location has changed
             LocationInfo lInfo = chngMsg.getLocationInfo();
-            // Post only if data has changed significantly
+            //Post only if data has changed significantly
             if (lInfo.isChnaged(m_locationInfo) && m_coverageInfo!=null) {
                 Log.d(TAG, "Location has changed");
                 Log.d(TAG,"Longitude" + lInfo.getLongitude() + ", latitude" + lInfo.getLatitude());
@@ -225,12 +226,14 @@ public class StateChangeHandler extends Handler {
                         "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 Date date = new Date();
                 cParams.setDateTime(dateFormat.format(date));
-                postToServer(cParams); // post the data to server
+                //Posting the data to server
+                postToServer(cParams);
             }
             m_locationInfo = lInfo;
         } else {
+            //Signal strength has changed
             CoverageInfo cInfo = chngMsg.getCoverageInfo();
-            // Post only if data has changed significantly
+            //Post only if data has changed significantly
             if (cInfo.isChanged(m_coverageInfo) && m_locationInfo != null) {
                 Log.d(TAG, "Coverage has changed");
                 Log.d(TAG,"Longitude" + m_locationInfo.getLongitude() + ", latitude" + m_locationInfo.getLatitude());
@@ -246,6 +249,7 @@ public class StateChangeHandler extends Handler {
                         "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 Date date = new Date();
                 cParams.setDateTime(dateFormat.format(date));
+                //Posting the data to server
                 postToServer(cParams);
             }
             m_coverageInfo = cInfo;

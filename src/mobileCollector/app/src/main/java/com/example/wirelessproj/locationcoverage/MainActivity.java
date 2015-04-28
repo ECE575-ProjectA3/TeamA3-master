@@ -1,13 +1,11 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
@@ -22,6 +20,7 @@ import static android.app.PendingIntent.getActivity;
 
 public class MainActivity extends Activity  {
 
+    //Initializations
     private HandlerThread myThread = null;
     private TelephonyManager tm = null;
     private LocationManager lm = null;
@@ -32,6 +31,7 @@ public class MainActivity extends Activity  {
 
 
     @Override
+    //Creating objects of TelephonyManager and LocationManager
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"Creating telephony manager");
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
@@ -53,9 +53,7 @@ public class MainActivity extends Activity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks here
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -66,9 +64,11 @@ public class MainActivity extends Activity  {
         return super.onOptionsItemSelected(item);
     }
 
+    //Defining actions to be carried out on clicking the toggle "Track" button
     public void onToggleClicked(View view) {
         boolean on = ((ToggleButton) view).isChecked();
         if (on) {
+            //Starting the worker thread
             Log.d(TAG, "Starting worker thread");
             myThread = new HandlerThread("Worker Thread");
             myThread.start();
@@ -96,6 +96,7 @@ public class MainActivity extends Activity  {
             tm.listen(pslTask, PhoneStateListener.LISTEN_NONE);
             pslTask = null;
 
+            //Stopping the worker thread
             Log.d(TAG, "Stopping thread");
             if (myThread != null) {
                 myThread.quitSafely();

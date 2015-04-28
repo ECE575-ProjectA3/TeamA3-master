@@ -24,6 +24,22 @@ mobileDisplay/                      Android data visualization app
     (put stuff here!!!)
 
 mobileCollector/                    Android data collection app
-    (put stuff here!!!)
+    build.gradle			gradle build files
+    gradle/wrapper/*
+    gradlew
+    gradlew.bat
+    mobileCollector.iml			configuration record for module
+    app/src/androidTest/java/com/example/wirelessproj/locationcoverage/ApplicationTest.java	test file	
+    app/src/main/
+        AndroidManifest.xml		essential information about app
+        res/*			 	specifies layout of app screens
+        java/com/example/wirelessproj/locationcoverage	
+            CoverageInfo.java			checks for changes in signal strength
+	    LocationInfo.java			checks for changes in location
+	    LocationListenerTask.java		assigns new location when changed
+	    MainActivity.java			main handler thread
+	    PhoneStateListener.java		assigns new signal strength when changed
+	    StageChangeHandler.java		posts data to server
+	    StateChangeMsg.java			triggers message when attribute changes
 
 (items marked with * are external resources not created by this team, and are property of their respective maintainers)

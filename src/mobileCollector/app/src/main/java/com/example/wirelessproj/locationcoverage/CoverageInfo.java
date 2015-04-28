@@ -1,8 +1,6 @@
-package com.example.shiv.locationcoverage;
+package com.example.wirelessproj.locationcoverage;
 
-/**
- * Created by shivu on 3/22/2015.
- */
+//Assigning and extracting signal strength values
 public class CoverageInfo {
 
     int m_signalStrengthLevel;
@@ -22,6 +20,7 @@ public class CoverageInfo {
 
     public String getNetworkProviderName() { return m_networkProviderName;}
 
+    //Checking if the signal strength has changed
     public boolean isChanged(CoverageInfo rhs) {
         if (rhs == null) {
             return true;
