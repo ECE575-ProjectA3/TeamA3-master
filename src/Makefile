@@ -1,5 +1,6 @@
 # dep: openjdk-7-jre
-#      maven
+#      gradle
+#      Android Studio SDK
 
 SHELL = /bin/sh
 
@@ -10,48 +11,43 @@ SHELL = /bin/sh
 ALL : dataServer mobileDisplay mobileCollector
 
 # compile and package dataServer
-dataServer : dataServer/target/dataServer-*.jar
-dataServer/target/dataServer-*.jar : dataServer/src/main/java/updatePackage/*.java
-	cd dataServer && mvn package
+dataServer : dataServer/build/libs/dataServer-*.jar
+dataServer/build/libs/dataServer-*.jar : dataServer/src/main/java/updatePackage/*.java
+	cd dataServer && ./gradlew assemble
 
 # compile and package mobileDisplay
-mobileDisplay : 
-	##
-	#add build commands here
-	##
+mobileDisplay : mobileDisplay/app/build/outputs/apk/app-release.apk
+mobileDisplay/app/build/outputs/apk/app-release.apk : 
+	cd mobileDisplay && ./gradlew assemble
 
 # compile and package mobileCollector
-mobileCollector : 
-	##
-	#add build commands here
-	##
+mobileCollector : mobileCollector/app/build/outputs/apk/app-release-unsigned.apk
+mobileCollector/app/build/outputs/apk/app-release-unsigned.apk : 
+	cd mobileCollector && ./gradlew assemble
 
 # install packages into bin directory
 install : install-dataServer \
 		  install-mobileDisplay \
 		  install-mobileCollector
-install-dataServer : dataServer
-	cp dataServer/target/dataServer-0.1.0.jar ../bin/
-install-mobileDisplay : mobileDisplay
-	##
-	#copy apk from build output into ../bin
-	##
-install-mobileCollector : mobileCollector
-	##
-	#copy apk from build output into ../bin
-	##
+install-dataServer : ../bin/dataServer.jar
+../bin/dataServer.jar : dataserver
+	cp dataServer/build/libs/dataServer-0.1.0.jar ../bin/dataServer.jar
+install-mobileDisplay : ../bin/mobileDisplayApp.apk
+../bin/mobileDisplayApp.apk : mobileDisplay
+	cp mobileDisplay/app/build/outputs/apk/app-release.apk \
+		../bin/mobileDisplayApp.apk
+install-mobileCollector : ../bin/mobileCollectorApp.apk
+../bin/mobileCollectorApp.apk : mobileCollector
+	cp mobileCollector/app/build/outputs/apk/app-release-unsigned.apk \
+		../bin/mobileCollectorApp.apk
 
-# clean build artifacts from src
+# clean build artifacts from src directory
 clean : clean-dataServer \
 	    clean-mobileDisplay \
 	    clean-mobileCollector
 clean-dataServer : 
-	rm -vrf dataServer/target
+	rm -vrf dataServer/build
 clean-mobileDisplay : 
-	##
-	#clean build output from src directory
-	##
+	rm -vrf mobileDisplay/build mobileDisplay/app/build
 clean-mobileCollector : 
-	##
-	#clean build output from src directory
-	##
+	rm -vrf mobileCollector/build mobileCollector/app/build
