@@ -3,3 +3,6 @@ be built by simply typing "make" from the src directory.
 
 NOTE: implement Makefile instructions for Android apps or provide
       build instructions here!
+	  
+Mobile collector app:
+	- From Android studio, File -> Import projects. Specify the mobile collector app path. once project is loaded, go to Build->Make project, this will build and generates the APK file in app\build\outputs\apk directory. 
