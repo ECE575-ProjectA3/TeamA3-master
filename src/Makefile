@@ -20,13 +20,11 @@ dataServer/build/libs/dataServer-*.jar : dataServer/src/main/java/updatePackage/
 # compile and package mobileDisplay
 mobileDisplay : mobileDisplay/app/build/outputs/apk/app-release.apk
 mobileDisplay/app/build/outputs/apk/app-release.apk : 
-	${ANDROID_HOME} || export ANDROID_HOME = ANDROID_SDK_DIR
 	cd mobileDisplay && ./gradlew assemble
 
 # compile and package mobileCollector
 mobileCollector : mobileCollector/app/build/outputs/apk/app-release-unsigned.apk
 mobileCollector/app/build/outputs/apk/app-release-unsigned.apk : 
-	${ANDROID_HOME} || export ANDROID_HOME = ANDROID_SDK_DIR
 	cd mobileCollector && ./gradlew assemble
 
 # install packages into bin directory
