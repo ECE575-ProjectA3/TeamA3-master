@@ -1,3 +1,53 @@
 <!--	A comprehensive (as comprehensive as possible) list of problems that you encountered and the solutions, including the dead-ends.	-->
 <!--	How-to manuals, links to how-to manuals, miracle flags and advice for next year's students.						-->
+<html>
+<head>
+	<title align="center"> Cellular Coverage </title>
+</head>
+<body>
 
+	<h2> Practical Problems </h2>
+	
+	<h4> Data Server </h4>
+	<ul>
+		<li> In order to permit remote applications to connect to
+			 the server, Cross Origin Resource Sharing (CORS) headers
+			 must by enabled on the server. The appropriate headers are
+			 specified in the file EnableCORS.java <br><br>
+			 <a href="https://spring.io/guides/gs/rest-service-cors/">
+				Guide detailed here</a>
+		</li>
+	</ul>
+	
+	<h4> Web Display </h4>
+	<ul>
+		<li> The web display was initially subject to the CORS problem
+			 detailed above. However, enabling CORS headers on the
+			 server resolved the issue.
+		</li>
+	</ul>
+	
+	<h4> Mobile Display </h4>
+	<ul>
+		<li> The Android visualization app was likewise subject to the
+			 aforementioned CORS problem until the server was fixed.
+		</li>
+	</ul>
+	
+	<h4> Mobile Collector </h4>
+	<ul>
+		<li> In order to prevent a flood of location and signal strength
+			 updates, minimum thresholds should be set to limit the
+			 frequency of callbacks. However, if the threshold is too
+			 large then the update density will be too low. Our design
+			 utilizes a minimum distance of 10 meters and broke the
+			 signal strength into 4 sections, with an update occuring
+			 only between sections. Additionally, we limited the update
+			 frequency to 2 minutes, though in practice this ended up
+			 being too high. A much lower recommended time such as 10 to
+			 30 seconds is recommended.
+		</li>
+	</ul>
+
+</body>
+</html>

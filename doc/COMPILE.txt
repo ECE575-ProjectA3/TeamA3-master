@@ -1,1 +1,5 @@
+A Makefile is configured to build the data server, so the server jar can
+be built by simply typing "make" from the src directory.
 
+NOTE: implement Makefile instructions for Android apps or provide
+      build instructions here!
