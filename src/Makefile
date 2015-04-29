@@ -3,31 +3,44 @@
 
 SHELL = /bin/sh
 
-.PHONY : ALL, clean, clean-dataServer, clean-mobileDisplay, 
-	clean-mobileCollector, dataServer, mobileDisplay, mobileCollector
+.PHONY : ALL install clean dataServer mobileDisplay mobileCollector \
+	install-dataServer install-mobileDisplay install-mobileCollector \
+	clean-dataServer clean-mobileDisplay clean-mobileCollector
 
-ALL : dataServer 
+ALL : dataServer mobileDisplay mobileCollector
 
 # compile and package dataServer
-dataServer : dataServer/target/dataServer-*.jar clean-dataServer
+dataServer : dataServer/target/dataServer-*.jar
 dataServer/target/dataServer-*.jar : dataServer/src/main/java/updatePackage/*.java
 	cd dataServer && mvn package
-	cp dataServer/target/dataServer-0.1.0.jar ../bin/
-	
+
 # compile and package mobileDisplay
 mobileDisplay : 
+	##
 	#add build commands here
+	##
 
 # compile and package mobileCollector
 mobileCollector : 
+	##
 	#add build commands here
+	##
 
-# clean binaries from system
-clean : clean-dataServer
-	rm -vrf ../bin/dataServer-0.1.0.jar
-	#rm -vrf ../bin/mobileDisplayApp.apk
-	#rm -vrf ../bin/mobileCollectorApp.apk
+# install packages into bin directory
+install : install-dataServer \
+		  install-mobileDisplay \
+		  install-mobileCollector
+install-dataServer : dataServer
+	cp dataServer/target/dataServer-0.1.0.jar ../bin/
+install-mobileDisplay : mobileDisplay
+	#copy apk from build output into ../bin
+install-mobileCollector : mobileCollector
+	#copy apk from build output into ../bin
 
+# clean build artifacts from src
+clean : clean-dataServer \
+	    clean-mobileDisplay \
+	    clean-mobileCollector
 clean-dataServer : 
 	rm -vrf dataServer/target
 clean-mobileDisplay : 
