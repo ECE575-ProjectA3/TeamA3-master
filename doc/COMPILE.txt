@@ -1,6 +1,7 @@
-A Makefile is configured to build the data server, so the server jar can
-be built by simply typing "make" from the src directory.
-  
+ * Install gradle, openjdk-7-jre, and Android Studio
+ * From the command line, navigate to the "src" directory and type:
+	"make && make install"
+
 Mobile collector app:
 	- From Android studio, File -> Import projects. Specify the mobile collector app path. once project is loaded, go to Build->Make project. 
 	- There are two ways to generate APK. The generated APK will be at app\build\outputs\apk folder.
