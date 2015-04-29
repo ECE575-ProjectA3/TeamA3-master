@@ -1,0 +1,46 @@
+[ Usage documentation for the data server ]
+
+ * setup a server with MySQL server and java JRE version 7
+
+ * configure server to be remotely accessible on port 8080 at domain
+		name ece575a2.ddns.net (or alter domain target in the code)
+
+ * Create MySQL user "sql" with password "ece575a3" and
+		full permissions to database "ece575"
+
+ * Create SQL tables for each carrier:
+		ATT, Sprint, TMobile, USCellular, Verison
+
+ * Start server with the following command:
+		java -jar dataServer-0.1.0.jar
+
+
+[ Usage documentation for the web display ]
+
+ * Open mapDisplay.html in a web browser
+ 
+ * Select desired network provider and data type from the dropdown lists
+ 
+ * (optional) Specify a date and time range for filtering using
+	the text fields below
+
+ * Generate the map by pressing the "Generate Map" button
+ 
+ 
+ [ Usage documentation for the mobile display ]
+ 
+ * Select network provider, data type from the menu provided
+ 
+ * (optional) Specify the date and time range for filtering using
+	the provided text fields
+ 
+ * Generage the map with the provided options by pressing the button
+ 
+ 
+ [ Usage documentation for the mobile collector ]
+ 
+ * Start the app by pressing the center button
+ 
+ * Collect data for as long as desired
+ 
+ * Press the button again to stop data collection
