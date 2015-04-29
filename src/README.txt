@@ -84,8 +84,8 @@ mobileCollector/                    Android data collection app
     gradlew                                 ..
     gradlew.bat                             ..
     settings.gradle                         ..
-    LocationCoverage.iml
-    mobileCollector.iml
+    LocationCoverage.iml		configuration record
+    mobileCollector.iml				..
     app/
         app.iml
         build.gradle
@@ -93,29 +93,29 @@ mobileCollector/                    Android data collection app
         src/
             androidTest/java/com/example/
                 wirelessproj/locationcoverage/
-                    ApplicationTest.java
+                    ApplicationTest.java	test file
             main/
-                AndroidManifest.xml
+                AndroidManifest.xml		app Information
                 java/com/example/
-                    wirelessproj/locationcoverage/
-                        CoverageInfo.java
-                        LocationInfo.java
-                        LocationListenerTask.java
-                        MainActivity.java
-                        PhoneStateListenerTask.java
-                        StateChangeHandler.java
-                        StateChangeMsg.java
+                    wirelessproj/locationcoverage/	source package
+                        CoverageInfo.java		checks for change in signal strength
+                        LocationInfo.java		checks for change in location
+                        LocationListenerTask.java	sets new location parameters
+                        MainActivity.java		main handler thread
+                        PhoneStateListenerTask.java	sets new signal strength parameters
+                        StateChangeHandler.java		updates data to server
+                        StateChangeMsg.java		triggers state change message
                 res/
-                    layout/activity_main.xml
-                    menu/menu_main.xml
-                    mipmap-hdpi/ic_launcher.png
-                    mipmap-mdpi/ic_launcher.png
-                    mipmap-xhdpi/ic_launcher.png
-                    mipmap-xxhdpi/ic_launcher.png
-                    values/
-                        dimens.xml
-                        strings.xml
-                        styles.xml
+                    layout/activity_main.xml		defines layout of app
+                    menu/menu_main.xml			menu page layout
+                    mipmap-hdpi/ic_launcher.png		image used in app
+                    mipmap-mdpi/ic_launcher.png			..
+                    mipmap-xhdpi/ic_launcher.png		..
+                    mipmap-xxhdpi/ic_launcher.png		..
+                    values/					
+                        dimens.xml			dimension values
+                        strings.xml			string values
+                        styles.xml			style values
                     values-v21/styles.xml
                     values-w820dp/dimens.xml
 
