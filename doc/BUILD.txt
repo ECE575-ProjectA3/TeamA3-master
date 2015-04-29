@@ -1,0 +1,33 @@
+NOTE: These build instructions assume a Linux-based
+	development environment is present
+
+(1) Install gradle and openjdk-7-jre
+ 
+(2) Install Android Studio
+		(https://developer.android.com/sdk/index.html)
+
+(3) Do one of the following to locate the Android SDK:
+
+	* Import src/mobileDisplay and src/mobileCOllector into
+		Android Studio so it will populate local.properties
+		with the SDK path automatically
+		
+	* set the ANDROID_HOME environmental variable yourself by typing
+		"export ANDROID_HOME=<sdk location>"
+		
+		(tip: this may be "${HOME}/Android/Sdk" depending on your setup)
+		
+(4) From the command line, navigate to the "src" directory and type:
+	"make"
+
+TROUBLESHOOTING
+
+ * If you are on a 64-bit system, installation of Android
+	Studio may fail. To resolve this, you must install the
+	following 32-bit library packages:
+		lib32z1 lib32ncurses5 lib32stdc++6
+
+ * NOTE: The preceeding package names are from the debian repository.
+	Ubuntu uses these package names, however other distributions 
+	such as Fedora or Red Hat Enterprise may use different names for
+	these library packages.

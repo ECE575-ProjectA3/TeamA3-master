@@ -1,3 +1,7 @@
+Build directories and source code for the various modules of the project
+
+Directory Structure:
+
 dataServer/                         central data server
     build.gradle                        gradle build configuration
     gradle/wrapper/                         ..
@@ -5,7 +9,6 @@ dataServer/                         central data server
         gradle-wrapper.properties           ..
     gradlew                                 ..
     gradlew.bat                             ..
-    pom.xml                             maven build configuration
     src/main/java/updatePackage/        source package for the server
         Application.java                    main server launch thread
         EnableCORS.java                     enable CORS headers
