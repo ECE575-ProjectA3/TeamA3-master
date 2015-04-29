@@ -6,7 +6,6 @@ dataServer/                         central data server
     gradlew                                 ..
     gradlew.bat                             ..
     pom.xml                             maven build configuration
-    target                              symbolic link to bin/dataServer
     src/main/java/updatePackage/        source package for the server
         Application.java                    main server launch thread
         EnableCORS.java                     enable CORS headers
