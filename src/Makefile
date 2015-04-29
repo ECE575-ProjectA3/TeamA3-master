@@ -33,9 +33,13 @@ install : install-dataServer \
 install-dataServer : dataServer
 	cp dataServer/target/dataServer-0.1.0.jar ../bin/
 install-mobileDisplay : mobileDisplay
+	##
 	#copy apk from build output into ../bin
+	##
 install-mobileCollector : mobileCollector
+	##
 	#copy apk from build output into ../bin
+	##
 
 # clean build artifacts from src
 clean : clean-dataServer \
@@ -44,6 +48,10 @@ clean : clean-dataServer \
 clean-dataServer : 
 	rm -vrf dataServer/target
 clean-mobileDisplay : 
+	##
 	#clean build output from src directory
+	##
 clean-mobileCollector : 
+	##
 	#clean build output from src directory
+	##
