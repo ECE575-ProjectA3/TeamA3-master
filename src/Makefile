@@ -24,9 +24,9 @@ mobileCollector :
 
 # clean binaries from system
 clean : clean-dataServer
-	rm -vrf ../bin/dataServer*
-	rm -vrf ../bin/mobileDisplay*
-	rm -vrf ../bin/mobileCollector*
+	rm -vrf ../bin/dataServer-0.1.0.jar
+	#rm -vrf ../bin/mobileDisplayApp.apk
+	#rm -vrf ../bin/mobileCollectorApp.apk
 
 clean-dataServer : 
 	rm -vrf dataServer/target
