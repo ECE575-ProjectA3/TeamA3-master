@@ -20,3 +20,10 @@ Mobile collector app:
 	- There are two ways to generate APK. The generated APK will be at app\build\outputs\apk folder.
 		1. In Android studio, click on gradle i.e. on the extreme right of IDE. This will open up an window of gradle task and double click on assemble. This will genrate APK
 		2. or if gradle is installed in the system then run: gradle assemble from the project directory.
+	
+Mobile Visualization app:
+	- From Android studio, File -> Import projects. Specify the mobile visualization app path. once project is loaded, go to Build->Make project. 
+	- There are two ways to generate APK. The generated APK will be at app\build\outputs\apk folder.
+		1. In Android studio, click on gradle i.e. on the extreme right of IDE. This will open up an window of gradle task and double click on assemble. This will genrate APK
+		2. or if gradle is installed in the system then run: gradle assemble from the project directory.
+
