@@ -9,7 +9,7 @@ SHELL = /bin/sh
 ALL : dataServer 
 
 # compile and package dataServer
-dataServer : dataServer/target/dataServer-*.jar
+dataServer : dataServer/target/dataServer-*.jar clean-dataServer
 dataServer/target/dataServer-*.jar : dataServer/src/main/java/updatePackage/*.java
 	cd dataServer && mvn package
 	cp dataServer/target/dataServer-0.1.0.jar ../bin/
@@ -24,11 +24,13 @@ mobileCollector :
 
 # clean binaries from system
 clean : clean-dataServer
+	rm -vrf ../bin/dataServer*
+	rm -vrf ../bin/mobileDisplay*
+	rm -vrf ../bin/mobileCollector*
 
 clean-dataServer : 
 	rm -vrf dataServer/target
-	rm -vrf ../bin/dataServer*
 clean-mobileDisplay : 
-	rm -vrf ../bin/mobileDisplay*
+	#clean build output from src directory
 clean-mobileCollector : 
-	rm -vrf ../bin/mobileCollector*
+	#clean build output from src directory
